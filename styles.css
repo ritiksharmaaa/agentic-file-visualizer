@@ -124,6 +124,41 @@ h3 {
   padding-right: 0.2rem;
 }
 
+.tree-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tree-toggle {
+  width: 1.55rem;
+  height: 1.55rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #4b4b52;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  flex: 0 0 auto;
+}
+
+.tree-toggle:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.tree-toggle:hover:not(:disabled),
+.tree-toggle:focus-visible:not(:disabled) {
+  border-color: var(--border);
+  background: #ffffff;
+}
+
+.folder-button.tree-item {
+  width: auto;
+  flex: 1;
+}
+
 .folder-button {
   width: 100%;
   border: 1px solid transparent;

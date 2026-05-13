@@ -1,6 +1,405 @@
-const folderData = [
-  {
-    name: ".ai/",
+const aiWorkspaceDisclosure = `.ai/
+│
+├── README.md
+├── registry.json
+├── settings.json
+├── conventions.md
+├── glossary.md
+├── routing-rules.md
+├── orchestration-engine.md
+├── context-loading.md
+├── security-policy.md
+├── memory-policy.md
+├── token-budget.md
+├── model-routing.md
+├── agent-selection.md
+├── execution-policy.md
+├── fallback-policy.md
+├── retry-policy.md
+├── observability.md
+├── audit-policy.md
+│
+├── global/
+│   ├── user-preferences.md
+│   ├── engineering-philosophy.md
+│   ├── shell-preferences.md
+│   ├── editor-preferences.md
+│   ├── coding-style.md
+│   ├── naming-conventions.md
+│   ├── response-style.md
+│   ├── git-preferences.md
+│   ├── commit-style.md
+│   ├── stack-preferences.md
+│   ├── architecture-bias.md
+│   ├── testing-preferences.md
+│   ├── debug-strategy.md
+│   ├── productivity-rules.md
+│   └── anti-patterns.md
+│
+├── shared/
+│   ├── architecture.md
+│   ├── stack.md
+│   ├── coding-standards.md
+│   ├── backend-standards.md
+│   ├── frontend-standards.md
+│   ├── database-standards.md
+│   ├── api-standards.md
+│   ├── auth-standards.md
+│   ├── caching-strategy.md
+│   ├── event-driven-patterns.md
+│   ├── scaling-guidelines.md
+│   ├── testing-guidelines.md
+│   ├── security-guidelines.md
+│   ├── deployment-guidelines.md
+│   ├── observability-guidelines.md
+│   ├── logging-guidelines.md
+│   ├── monitoring-guidelines.md
+│   ├── error-handling.md
+│   ├── validation-rules.md
+│   ├── accessibility.md
+│   ├── performance-rules.md
+│   ├── ui-patterns.md
+│   ├── animation-guidelines.md
+│   ├── state-management.md
+│   ├── design-system.md
+│   ├── file-structure.md
+│   ├── folder-conventions.md
+│   ├── branch-strategy.md
+│   ├── release-process.md
+│   ├── ci-cd.md
+│   ├── infrastructure.md
+│   ├── docker-guidelines.md
+│   ├── kubernetes-guidelines.md
+│   ├── queue-processing.md
+│   ├── websocket-patterns.md
+│   ├── streaming-architecture.md
+│   ├── recommendation-system.md
+│   ├── video-pipeline.md
+│   ├── payment-flow.md
+│   ├── rate-limiting.md
+│   ├── indexing-strategy.md
+│   ├── search-architecture.md
+│   ├── seo-guidelines.md
+│   ├── data-retention.md
+│   ├── backup-policy.md
+│   ├── incident-response.md
+│   ├── feature-flag-policy.md
+│   ├── package-management.md
+│   └── dependency-policy.md
+│
+├── agents/
+│   │
+│   ├── backend-architect/
+│   │   ├── agent.md
+│   │   ├── identity.md
+│   │   ├── mission.md
+│   │   ├── personality.md
+│   │   ├── behavior.md
+│   │   ├── principles.md
+│   │   ├── constraints.md
+│   │   ├── workflow.md
+│   │   ├── execution-plan.md
+│   │   ├── reasoning-style.md
+│   │   ├── decision-tree.md
+│   │   ├── escalation-policy.md
+│   │   ├── retry-policy.md
+│   │   ├── failure-handling.md
+│   │   ├── anti-patterns.md
+│   │   ├── checklists.md
+│   │   ├── skills.md
+│   │   ├── capabilities.md
+│   │   ├── memory.md
+│   │   ├── short-term-memory.md
+│   │   ├── long-term-memory.md
+│   │   ├── episodic-memory.md
+│   │   ├── semantic-memory.md
+│   │   ├── tools.json
+│   │   ├── permissions.json
+│   │   ├── environment.json
+│   │   ├── dependencies.json
+│   │   ├── models.json
+│   │   ├── context-rules.md
+│   │   ├── retrieval-policy.md
+│   │   ├── chunking-policy.md
+│   │   ├── ranking-policy.md
+│   │   ├── summarization-policy.md
+│   │   ├── prompts/
+│   │   │   ├── planning.md
+│   │   │   ├── implementation.md
+│   │   │   ├── refactor.md
+│   │   │   ├── debugging.md
+│   │   │   ├── optimization.md
+│   │   │   ├── migration.md
+│   │   │   ├── architecture-review.md
+│   │   │   ├── code-review.md
+│   │   │   ├── testing.md
+│   │   │   ├── deployment.md
+│   │   │   ├── documentation.md
+│   │   │   └── emergency-fix.md
+│   │   │
+│   │   ├── scripts/
+│   │   │   ├── bootstrap.sh
+│   │   │   ├── analyze-repo.sh
+│   │   │   ├── lint-fix.sh
+│   │   │   ├── run-tests.sh
+│   │   │   ├── generate-types.sh
+│   │   │   ├── dependency-audit.sh
+│   │   │   ├── docker-build.sh
+│   │   │   ├── deploy.sh
+│   │   │   ├── rollback.sh
+│   │   │   ├── cleanup.sh
+│   │   │   ├── benchmark.sh
+│   │   │   ├── migration.sh
+│   │   │   ├── backup.sh
+│   │   │   └── profiling.sh
+│   │   │
+│   │   ├── knowledge/
+│   │   │   ├── backend-patterns.md
+│   │   │   ├── distributed-systems.md
+│   │   │   ├── event-sourcing.md
+│   │   │   ├── cqrs.md
+│   │   │   ├── caching.md
+│   │   │   ├── scaling.md
+│   │   │   ├── database-indexing.md
+│   │   │   ├── postgres.md
+│   │   │   ├── redis.md
+│   │   │   ├── kafka.md
+│   │   │   ├── websocket-systems.md
+│   │   │   ├── auth-systems.md
+│   │   │   ├── oauth.md
+│   │   │   ├── queue-processing.md
+│   │   │   ├── observability.md
+│   │   │   ├── microservices.md
+│   │   │   ├── monoliths.md
+│   │   │   ├── api-versioning.md
+│   │   │   ├── grpc.md
+│   │   │   ├── graphql.md
+│   │   │   ├── streaming.md
+│   │   │   └── rate-limiting.md
+│   │   │
+│   │   ├── sessions/
+│   │   │   ├── current-session.md
+│   │   │   ├── previous-session.md
+│   │   │   ├── unresolved-issues.md
+│   │   │   └── completed-tasks.md
+│   │   │
+│   │   ├── outputs/
+│   │   │   ├── plans/
+│   │   │   ├── reports/
+│   │   │   ├── diffs/
+│   │   │   ├── summaries/
+│   │   │   └── reviews/
+│   │   │
+│   │   └── logs/
+│   │       ├── execution.log
+│   │       ├── reasoning.log
+│   │       ├── errors.log
+│   │       └── audit.log
+│   │
+│   ├── frontend-designer/
+│   ├── devops-agent/
+│   ├── security-auditor/
+│   ├── performance-optimizer/
+│   ├── database-engineer/
+│   ├── ai-researcher/
+│   ├── product-strategist/
+│   ├── ui-ux-agent/
+│   ├── code-reviewer/
+│   ├── debugging-agent/
+│   ├── documentation-agent/
+│   ├── testing-agent/
+│   ├── accessibility-agent/
+│   ├── seo-agent/
+│   ├── deployment-agent/
+│   ├── infra-agent/
+│   ├── analytics-agent/
+│   ├── recommendation-agent/
+│   ├── streaming-agent/
+│   ├── monetization-agent/
+│   └── orchestration-agent/
+│
+├── orchestration/
+│   ├── agent-routing.md
+│   ├── execution-graph.md
+│   ├── delegation-rules.md
+│   ├── coordination-policy.md
+│   ├── collaboration-rules.md
+│   ├── parallelism.md
+│   ├── load-balancing.md
+│   ├── conflict-resolution.md
+│   ├── fallback-strategy.md
+│   ├── task-distribution.md
+│   ├── communication-protocol.md
+│   ├── state-machine.md
+│   ├── supervisor-agent.md
+│   ├── planner-agent.md
+│   ├── evaluator-agent.md
+│   ├── critic-agent.md
+│   └── recovery-agent.md
+│
+├── memory/
+│   ├── project-memory.md
+│   ├── engineering-decisions.md
+│   ├── architecture-decisions.md
+│   ├── known-bugs.md
+│   ├── recurring-issues.md
+│   ├── lessons-learned.md
+│   ├── optimization-history.md
+│   ├── migration-history.md
+│   ├── release-notes.md
+│   ├── incident-history.md
+│   └── retrospectives.md
+│
+├── tasks/
+│   ├── active/
+│   ├── planned/
+│   ├── backlog/
+│   ├── completed/
+│   ├── blocked/
+│   ├── archived/
+│   ├── feature-development/
+│   ├── bug-fixes/
+│   ├── refactors/
+│   ├── migrations/
+│   ├── scaling/
+│   ├── deployments/
+│   └── research/
+│
+├── sessions/
+│   ├── active/
+│   ├── archived/
+│   ├── shared-context/
+│   ├── context-snapshots/
+│   ├── checkpoints/
+│   └── handoffs/
+│
+├── workflows/
+│   ├── feature-development.md
+│   ├── bug-investigation.md
+│   ├── code-review.md
+│   ├── incident-response.md
+│   ├── production-debugging.md
+│   ├── deployment.md
+│   ├── rollback.md
+│   ├── database-migration.md
+│   ├── scaling.md
+│   ├── security-audit.md
+│   ├── optimization.md
+│   ├── architecture-review.md
+│   ├── onboarding.md
+│   ├── release-cycle.md
+│   └── emergency-recovery.md
+│
+├── prompts/
+│   ├── planning/
+│   ├── implementation/
+│   ├── debugging/
+│   ├── optimization/
+│   ├── architecture/
+│   ├── migration/
+│   ├── deployment/
+│   ├── testing/
+│   ├── review/
+│   └── brainstorming/
+│
+├── scripts/
+│   ├── bootstrap/
+│   ├── repo-analysis/
+│   ├── indexing/
+│   ├── linting/
+│   ├── testing/
+│   ├── deployment/
+│   ├── benchmarking/
+│   ├── profiling/
+│   ├── monitoring/
+│   ├── migrations/
+│   ├── backup/
+│   ├── recovery/
+│   └── cleanup/
+│
+├── knowledge/
+│   ├── backend/
+│   ├── frontend/
+│   ├── devops/
+│   ├── security/
+│   ├── ai/
+│   ├── distributed-systems/
+│   ├── streaming/
+│   ├── payments/
+│   ├── databases/
+│   ├── networking/
+│   ├── performance/
+│   ├── scaling/
+│   ├── architecture/
+│   └── product/
+│
+└── telemetry/
+    ├── usage/
+    ├── performance/
+    ├── token-consumption/
+    ├── execution-history/
+    ├── failures/
+    ├── latency/
+    ├── traces/
+    └── analytics/`;
+
+function ensureTrailingSlash(value) {
+  return value.endsWith("/") ? value : `${value}/`;
+}
+
+function getParentDirectory(path) {
+  const normalized = path.endsWith("/") ? path.slice(0, -1) : path;
+  const lastSlash = normalized.lastIndexOf("/");
+  if (lastSlash === -1) {
+    return null;
+  }
+  return ensureTrailingSlash(normalized.slice(0, lastSlash + 1));
+}
+
+function getBaseName(path) {
+  const normalized = path.endsWith("/") ? path.slice(0, -1) : path;
+  const parts = normalized.split("/");
+  return parts[parts.length - 1] || normalized;
+}
+
+function parseWorkspaceDisclosure(treeText) {
+  const directories = new Set([ensureTrailingSlash(".ai")]);
+  const files = new Set();
+  const stack = [ensureTrailingSlash(".ai")];
+
+  treeText.split("\n").forEach((line) => {
+    const match = line.match(
+      /^(?<indent>(?:│   |    )*)(?:├──|└──)\s+(?<name>.+)$/
+    );
+    if (!match || !match.groups) {
+      return;
+    }
+
+    const depth = Math.floor(match.groups.indent.length / 4);
+    const name = match.groups.name.trim();
+    const parent = stack[depth] ?? ensureTrailingSlash(".ai");
+    const fullPath = `${parent}${name}`;
+
+    if (name.endsWith("/")) {
+      const dirPath = ensureTrailingSlash(fullPath);
+      directories.add(dirPath);
+      stack[depth + 1] = dirPath;
+      return;
+    }
+
+    files.add(fullPath);
+  });
+
+  return {
+    directories: Array.from(directories),
+    files: Array.from(files)
+  };
+}
+
+const aiWorkspace = parseWorkspaceDisclosure(aiWorkspaceDisclosure);
+
+const curatedFolderDetails = {
+  ".ai/": {
     type: "Root",
     description:
       "The platform-neutral root context package. It centralizes rules, operating docs, and agent orchestration files reused by Copilot, Codex, and Claude workflows.",
@@ -9,18 +408,10 @@ const folderData = [
       "Keeps standards, policies, and runbooks in one discoverable location",
       "Acts as a portable template teams can adapt per platform"
     ],
-    contains: [
-      "Core files like registry.json, settings.json, conventions.md",
-      "Specialized folders (global, shared, agents, orchestration, memory)",
-      "Execution and governance docs such as retry, fallback, and audit policies"
-    ],
     useCase:
-      "When onboarding a new assistant platform, teams copy this root package and tune routing + policies while preserving the same conceptual structure.",
-    exampleFile: "README.md",
-    markdown: `# Agentic Workspace\n\nThis folder is the source-of-truth for agent behavior.\n\n## Key outcomes\n- Consistent execution policy\n- Shared language across agents\n- Easy portability between AI coding platforms`
+      "Teams copy this root package and tune routing + policies while preserving the same conceptual structure."
   },
-  {
-    name: "global/",
+  ".ai/global/": {
     type: "Preference Layer",
     description:
       "Cross-project preference guides: coding style, naming, git habits, engineering philosophy, and response behavior.",
@@ -29,18 +420,10 @@ const folderData = [
       "Reduces repetitive instruction in every task",
       "Improves consistency across generated code and communication"
     ],
-    contains: [
-      "coding-style.md, naming-conventions.md, commit-style.md",
-      "editor-preferences.md and shell-preferences.md",
-      "anti-patterns.md to avoid repeated mistakes"
-    ],
     useCase:
-      "Before writing code, an agent loads this folder to align with formatting, naming, and collaboration expectations automatically.",
-    exampleFile: "coding-style.md",
-    markdown: `# Coding Style\n\n## JavaScript\n- Use const by default\n- Prefer small pure functions\n- Keep UI copy concise and user-centered\n\n## Commits\n- Write imperative commit messages\n- Scope each commit to one clear purpose`
+      "Before writing code, agents load this folder to align with formatting, naming, and collaboration expectations."
   },
-  {
-    name: "shared/",
+  ".ai/shared/": {
     type: "Standards Library",
     description:
       "Reusable architecture and engineering standards that apply across multiple agents and domains.",
@@ -49,18 +432,10 @@ const folderData = [
       "Provides a single reference set for large multi-agent workflows",
       "Prevents conflicting implementation patterns"
     ],
-    contains: [
-      "architecture.md, stack.md, coding-standards.md",
-      "security-guidelines.md, accessibility.md, performance-rules.md",
-      "domain references such as websocket-patterns.md and rate-limiting.md"
-    ],
     useCase:
-      "When a backend and UI agent collaborate, both can rely on the same shared standards to keep output compatible.",
-    exampleFile: "security-guidelines.md",
-    markdown: `# Security Guidelines\n\n## Input Safety\n- Validate all incoming payloads\n- Sanitize untrusted content before rendering\n\n## Secrets\n- Never commit credentials\n- Use runtime environment injection`
+      "When a backend and UI agent collaborate, both can rely on the same shared standards to keep output compatible."
   },
-  {
-    name: "agents/",
+  ".ai/agents/": {
     type: "Agent Blueprints",
     description:
       "Role-based definitions for specialized agents (backend, UI/UX, security, testing, deployment, etc.).",
@@ -69,18 +444,10 @@ const folderData = [
       "Separates responsibilities to support parallel execution",
       "Allows targeted prompts and capability boundaries"
     ],
-    contains: [
-      "Per-agent docs: mission.md, behavior.md, workflow.md",
-      "prompts/, scripts/, knowledge/, sessions/, outputs/, logs/",
-      "tools.json and permissions.json for controlled execution"
-    ],
     useCase:
-      "A supervisor routes a database task to database-engineer while assigning security checks to security-auditor in parallel.",
-    exampleFile: "agents/backend-architect/mission.md",
-    markdown: `# Mission\n\nYou are the backend architect agent.\n\n## Objectives\n1. Propose scalable service boundaries\n2. Design reliable API contracts\n3. Ensure observability and failure recovery`
+      "A supervisor routes work to specialized agents (e.g. database-engineer, security-auditor) in parallel."
   },
-  {
-    name: "orchestration/",
+  ".ai/orchestration/": {
     type: "Coordination Engine",
     description:
       "Rules for routing, delegation, conflict resolution, and recovery between multiple agents.",
@@ -89,18 +456,10 @@ const folderData = [
       "Defines collaboration protocol and state transitions",
       "Ensures graceful fallback when an agent fails"
     ],
-    contains: [
-      "agent-routing.md, execution-graph.md, state-machine.md",
-      "delegation-rules.md and collaboration-rules.md",
-      "supervisor-agent.md, planner-agent.md, critic-agent.md"
-    ],
     useCase:
-      "For a bugfix flow, planner-agent drafts subtasks, supervisor-agent dispatches work, and evaluator-agent verifies merged results.",
-    exampleFile: "execution-graph.md",
-    markdown: `# Execution Graph\n\nStart -> Plan -> Delegate -> Validate -> Merge\n\n## Failure Path\nIf validation fails: route to Debugging Agent -> re-run tests -> retry merge`
+      "Planner/supervisor/evaluator flows live here and define how parallel agent work stays coordinated."
   },
-  {
-    name: "memory/",
+  ".ai/memory/": {
     type: "Project Memory",
     description:
       "Persistent project knowledge: decisions, incidents, known bugs, release notes, and lessons learned.",
@@ -109,38 +468,34 @@ const folderData = [
       "Prevents repeated mistakes",
       "Supports faster onboarding for new contributors or agents"
     ],
-    contains: [
-      "engineering-decisions.md and architecture-decisions.md",
-      "known-bugs.md, recurring-issues.md, lessons-learned.md",
-      "incident-history.md and release-notes.md"
-    ],
     useCase:
-      "Before changing a fragile module, an agent reviews known-bugs.md and incident-history.md to avoid regressions.",
-    exampleFile: "known-bugs.md",
-    markdown: `# Known Bugs\n\n## Bug: stale routing cache\n- Trigger: config update without cache invalidation\n- Impact: wrong agent selected\n- Mitigation: clear routing cache after settings refresh`
+      "Before changing risky areas, agents review known bugs and prior incidents to avoid repeating regressions."
   },
-  {
-    name: "tasks/",
-    type: "Work Queue",
+  ".ai/tasks/": {
+    type: "Task Backlog",
     description:
-      "Task lifecycle management: active, planned, blocked, completed, archived, and categorized work streams.",
+      "Work tracking directories grouped by task lifecycle: active, planned, backlog, completed, blocked, archived.",
     purpose: [
-      "Tracks current and future work in a structured pipeline",
-      "Makes dependencies and blockers visible",
-      "Helps orchestration agents choose next actionable items"
-    ],
-    contains: [
-      "active/, planned/, backlog/, completed/, blocked/, archived/",
-      "Thematic streams like feature-development/ and bug-fixes/",
-      "Specialized tracks such as migrations/, scaling/, research/"
+      "Keeps tasks organized in a predictable lifecycle",
+      "Allows agents to pick up prioritized work",
+      "Stores artifacts and acceptance criteria close to the task context"
     ],
     useCase:
-      "A planner can prioritize tasks from backlog to active, then move outputs to completed after validation.",
-    exampleFile: "tasks/active/example-task.md",
-    markdown: `# Example Task\n\n- Title: Add search to folder explorer\n- Owner: frontend-designer\n- Status: active\n- Acceptance: keyboard accessible + responsive layout`
+      "A planner prioritizes tasks from backlog to active, then moves outputs to completed after validation."
   },
-  {
-    name: "workflows/",
+  ".ai/sessions/": {
+    type: "Session History",
+    description:
+      "Session snapshots and handoffs capturing what context was loaded and what work was performed over time.",
+    purpose: [
+      "Keeps per-session context auditable",
+      "Makes handoffs between agents repeatable",
+      "Helps debug why a run produced a given result"
+    ],
+    useCase:
+      "When an agent needs continuity, it reads the latest active session plus shared-context snapshots."
+  },
+  ".ai/workflows/": {
     type: "Runbooks",
     description:
       "Step-by-step process documentation for recurring activities like debugging, release, rollback, and audits.",
@@ -149,18 +504,10 @@ const folderData = [
       "Reduces execution ambiguity in high-pressure scenarios",
       "Supports repeatable quality for releases and incidents"
     ],
-    contains: [
-      "feature-development.md, bug-investigation.md, code-review.md",
-      "deployment.md, rollback.md, emergency-recovery.md",
-      "security-audit.md and architecture-review.md"
-    ],
     useCase:
-      "During production issues, incident-response and rollback runbooks guide fast, consistent action.",
-    exampleFile: "incident-response.md",
-    markdown: `# Incident Response\n\n1. Confirm severity\n2. Assign incident commander\n3. Stabilize production\n4. Communicate updates every 15 minutes\n5. Publish postmortem`
+      "During incidents, runbooks guide consistent actions and communication cadence."
   },
-  {
-    name: "prompts/",
+  ".ai/prompts/": {
     type: "Prompt Toolkit",
     description:
       "Curated prompt templates grouped by task type to steer agent behavior consistently.",
@@ -169,18 +516,10 @@ const folderData = [
       "Speeds up execution for common engineering tasks",
       "Keeps prompting style consistent across contributors"
     ],
-    contains: [
-      "planning/, implementation/, debugging/, testing/",
-      "architecture/, migration/, review/, brainstorming/",
-      "Domain-specific prompt starters and structure templates"
-    ],
     useCase:
-      "A reviewer can select prompts/review/checklist-style templates to enforce systematic code reviews.",
-    exampleFile: "prompts/implementation/example.md",
-    markdown: `# Implementation Prompt\n\nContext: Build a minimal feature without changing unrelated modules.\n\nRequirements:\n- Keep diffs small\n- Add focused validation\n- Summarize trade-offs`
+      "Teams keep prompting style consistent by reusing the same prompt shapes across tasks."
   },
-  {
-    name: "scripts/",
+  ".ai/scripts/": {
     type: "Automation Scripts",
     description:
       "Executable helpers for bootstrap, linting, testing, benchmarking, deployment, and operational maintenance.",
@@ -189,38 +528,22 @@ const folderData = [
       "Reduces manual error in setup and release tasks",
       "Encodes operational know-how into reusable commands"
     ],
-    contains: [
-      "bootstrap/, repo-analysis/, linting/, testing/",
-      "deployment/, monitoring/, migrations/, recovery/",
-      "benchmarking/, profiling/, cleanup/"
-    ],
     useCase:
-      "A CI pipeline can call scripts/testing and scripts/linting to standardize quality gates across environments.",
-    exampleFile: "scripts/bootstrap/setup.sh",
-    markdown: `# setup.sh\n\n#!/usr/bin/env bash\nset -euo pipefail\n\necho \"Preparing local agent workspace...\"\n# install deps\n# seed baseline settings`
+      "CI and agents call scripts here to standardize quality gates and operational tasks."
   },
-  {
-    name: "knowledge/",
+  ".ai/knowledge/": {
     type: "Domain References",
     description:
       "Topic-indexed technical references used by agents when generating solutions across stacks and domains.",
     purpose: [
       "Supplies just-in-time domain context",
-      "Improves technical depth in generated plans/code",
+      "Improves technical depth in generated plans and code",
       "Supports multi-discipline work (security, scaling, networking, AI)"
     ],
-    contains: [
-      "backend/, frontend/, devops/, security/, ai/",
-      "distributed-systems/, scaling/, performance/, databases/",
-      "architecture/ and product/ strategy notes"
-    ],
     useCase:
-      "Before suggesting a streaming design, an agent reads knowledge/streaming for proven patterns and trade-offs.",
-    exampleFile: "knowledge/security/input-validation.md",
-    markdown: `# Input Validation\n\n- Validate schema at boundaries\n- Reject unknown fields in strict modes\n- Log and monitor validation failures`
+      "Before proposing a design, agents read the most relevant domain folder to ground trade-offs."
   },
-  {
-    name: "telemetry/",
+  ".ai/telemetry/": {
     type: "Observability Data",
     description:
       "Operational signals and historical metrics for usage, latency, failures, traces, and token consumption.",
@@ -229,209 +552,163 @@ const folderData = [
       "Provides evidence for optimization decisions",
       "Supports incident diagnosis with historical data"
     ],
-    contains: [
-      "usage/, performance/, token-consumption/",
-      "execution-history/, failures/, latency/, traces/",
-      "analytics/ for trend and behavior insights"
-    ],
     useCase:
-      "A performance-optimizer agent can correlate latency spikes with token-consumption growth before proposing changes.",
-    exampleFile: "telemetry/performance/daily-summary.md",
-    markdown: `# Daily Performance Summary\n\n- P95 latency: 920ms (down 11%)\n- Task success rate: 98.7%\n- Top bottleneck: context-loading step`
+      "A performance agent correlates latency spikes with token consumption and failure trends."
   },
-  {
-    name: "telemetry/analytics/",
+  ".ai/telemetry/analytics/": {
     type: "Behavior Analytics",
     description:
-      "Product and workflow analytics: event schemas, dashboards, reporting, experimentation readouts, and governance for how insights are produced.",
+      "Analytics governance: event schemas, dashboards, reports, experiments, and guardrails for turning telemetry into decisions.",
     purpose: [
-      "Defines which events are tracked and how they map to KPIs",
-      "Standardizes dashboards, reports, and recurring analysis",
+      "Defines tracked events and how they map to KPIs",
+      "Standardizes dashboards and recurring reports",
       "Sets guardrails for privacy, data quality, and interpretation"
     ],
-    contains: [
-      "README.md, events-schema.md, kpi-definitions.md, data-quality.md, privacy.md",
-      "dashboards/, reports/, queries/, experiments/, segments/",
-      "retention.md, anomaly-detection.md"
-    ],
     useCase:
-      "A product-strategist agent reviews KPI definitions + retention notes, then pulls a standardized query template to validate a hypothesis before proposing a roadmap change.",
-    examples: [
-      {
-        file: "telemetry/analytics/README.md",
-        markdown: `# telemetry/analytics\n\nThis folder standardizes how we turn raw telemetry into decisions.\n\n## Contents\n- Event taxonomy + schemas\n- KPI definitions\n- Dashboards + recurring reports\n- Experiments + interpretation guardrails`
-      },
-      {
-        file: "telemetry/analytics/events-schema.md",
-        markdown: `# Events Schema\n\n## Naming\n- Use dot notation: \`agent.run.started\`\n- Prefer noun + verb + outcome\n\n## Required fields\n- \`timestamp\` (ISO)\n- \`session_id\`\n- \`agent_role\`\n- \`task_type\`\n- \`success\` (boolean)\n\n## Optional fields\n- \`latency_ms\`\n- \`tokens_in\`, \`tokens_out\`\n- \`error_code\``
-      },
-      {
-        file: "telemetry/analytics/kpi-definitions.md",
-        markdown: `# KPI Definitions\n\n## Success Rate\nSuccessful tasks / total tasks over a rolling 7-day window.\n\n## Cost per Task\n(token_cost_usd + infra_cost_usd) / successful tasks.\n\n## Time to First Useful Output\nP50 and P95 of elapsed seconds from task start to first validated artifact.`
-      },
-      {
-        file: "telemetry/analytics/data-quality.md",
-        markdown: `# Data Quality Checks\n\n- Reject events missing required fields\n- Monitor schema drift (new/removed keys)\n- Deduplicate by (session_id, event_id)\n- Alert on late-arriving events (> 24h)\n\n## Daily gate\nIf null-rate for \`success\` > 0.1%: block KPI rollups.`
-      },
-      {
-        file: "telemetry/analytics/privacy.md",
-        markdown: `# Privacy & PII\n\n- Never log secrets, tokens, or raw file contents\n- Hash stable identifiers when possible\n- Redact paths when they can reveal user info\n\n## Retention\n- Raw events: 30 days\n- Aggregates: 18 months\n\n## Access\n- Role-based access to raw events\n- Dashboards are safe-by-default (aggregated).`
-      },
-      {
-        file: "telemetry/analytics/retention.md",
-        markdown: `# Retention\n\n## Definitions\n- D0: first day active\n- D7/D30: returned and produced a successful task\n\n## Cohort cut\n- Cohort by first successful task\n- Exclude internal test traffic\n\n## Leading indicators\n- Save rate (exports per session)\n- Return-to-fix (reruns within 24h).`
-      },
-      {
-        file: "telemetry/analytics/anomaly-detection.md",
-        markdown: `# Anomaly Detection\n\n## Signals\n- P95 latency\n- failure rate\n- cost per task\n\n## Rules\n- Trigger when z-score > 3 over 14-day baseline\n- Suppress if traffic < minimum threshold\n\n## Response\n- Create incident ticket\n- Attach top contributing agents + tasks\n- Link queries used for diagnosis.`
-      }
-    ]
-  },
-  {
-    name: "telemetry/analytics/dashboards/",
-    type: "Dashboards",
-    description:
-      "Dashboard definitions for health, adoption, quality, latency, and cost—kept consistent across teams and tools.",
-    purpose: [
-      "Keeps KPI visualizations consistent across environments",
-      "Defines the minimum dashboard set for operations and product",
-      "Documents interpretation notes to avoid misleading reads"
-    ],
-    contains: [
-      "overview.md",
-      "latency.md",
-      "cost.md"
-    ],
-    useCase:
-      "An ops agent checks overview + latency dashboards during an incident to see impact by agent role and task type.",
-    examples: [
-      {
-        file: "telemetry/analytics/dashboards/overview.md",
-        markdown: `# Overview Dashboard\n\n## Tiles\n- Task success rate (7d)\n- P95 end-to-end latency\n- Cost per successful task\n\n## Breakdowns\n- By agent_role\n- By task_type\n- By repository (when available)`
-      },
-      {
-        file: "telemetry/analytics/dashboards/latency.md",
-        markdown: `# Latency Dashboard\n\n## Charts\n- P50/P95 latency over time\n- Slowest steps (context load, tools, validation)\n\n## Notes\n- Compare like-for-like task types\n- Watch for token spikes correlated with latency.`
-      },
-      {
-        file: "telemetry/analytics/dashboards/cost.md",
-        markdown: `# Cost Dashboard\n\n## KPIs\n- Token cost per task\n- Tokens in/out distributions\n- Top cost drivers by agent_role\n\n## Guardrails\n- Alert if cost/task increases > 20% week-over-week.`
-      }
-    ]
-  },
-  {
-    name: "telemetry/analytics/reports/",
-    type: "Reports",
-    description:
-      "Recurring reports that summarize trends, changes, and recommended actions based on standardized queries and KPI definitions.",
-    purpose: [
-      "Turns dashboards into narrative insight",
-      "Captures action items and owners",
-      "Creates an auditable history of decisions"
-    ],
-    contains: [
-      "weekly-insights.md",
-      "incident-postmortem-metrics.md"
-    ],
-    useCase:
-      "A supervisor agent produces a weekly summary and links it to the tasks backlog with specific follow-ups.",
-    examples: [
-      {
-        file: "telemetry/analytics/reports/weekly-insights.md",
-        markdown: `# Weekly Insights\n\n## Highlights\n- Success rate: 98.7% (+0.4pp)\n- P95 latency: 920ms (-11%)\n- Cost per task: $0.014 (+3%)\n\n## Actions\n- Investigate cost increase in \`security-auditor\`\n- Improve caching for context-loading step`
-      },
-      {
-        file: "telemetry/analytics/reports/incident-postmortem-metrics.md",
-        markdown: `# Postmortem Metrics Appendix\n\n## Impact window\n2026-05-10 12:05 UTC → 13:20 UTC\n\n## Observed\n- Failure rate peaked at 12.3%\n- P95 latency peaked at 4.2s\n\n## Links\n- Dashboard snapshot\n- Queries used for root cause.`
-      }
-    ]
-  },
-  {
-    name: "telemetry/analytics/queries/",
-    type: "Queries",
-    description:
-      "Reusable query templates (SQL or log query language) to power dashboards and answer recurring questions consistently.",
-    purpose: [
-      "Keeps analysis reproducible and reviewable",
-      "Avoids ad-hoc query drift for shared KPIs",
-      "Speeds up investigation by providing known-good templates"
-    ],
-    contains: [
-      "common-sql.md",
-      "funnel-query.md"
-    ],
-    useCase:
-      "A debugging agent uses the funnel query template to see where tasks fail in the execution pipeline.",
-    examples: [
-      {
-        file: "telemetry/analytics/queries/common-sql.md",
-        markdown: `# Common SQL Patterns\n\n## Success rate (7d)\n\`\`\`sql\nSELECT\n  date_trunc('day', timestamp) AS day,\n  AVG(CASE WHEN success THEN 1 ELSE 0 END) AS success_rate\nFROM events\nWHERE timestamp >= now() - interval '7 days'\nGROUP BY 1\nORDER BY 1;\n\`\`\``
-      },
-      {
-        file: "telemetry/analytics/queries/funnel-query.md",
-        markdown: `# Funnel Query\n\nGoal: measure drop-off across execution stages.\n\nStages:\n1. started\n2. planned\n3. tools_used\n4. validated\n5. completed\n\nOutput: conversion between each stage by task_type.`
-      }
-    ]
-  },
-  {
-    name: "telemetry/analytics/experiments/",
-    type: "Experiments",
-    description:
-      "A/B test and experiment artifacts: templates, guardrails, and analysis guidance for safe iteration.",
-    purpose: [
-      "Provides a consistent experiment write-up format",
-      "Sets guardrails for safety, cost, and quality",
-      "Records results and recommended follow-ups"
-    ],
-    contains: [
-      "ab-template.md",
-      "guardrails.md"
-    ],
-    useCase:
-      "A performance-optimizer drafts an experiment to reduce latency and uses guardrails to ensure success rate doesn’t regress.",
-    examples: [
-      {
-        file: "telemetry/analytics/experiments/ab-template.md",
-        markdown: `# Experiment: <name>\n\n## Hypothesis\nIf we change <X>, then <metric> improves because <reason>.\n\n## Metrics\n- Primary: P95 latency\n- Guardrails: success rate, cost/task\n\n## Ramp\n- 10% → 50% → 100% with stop conditions.`
-      },
-      {
-        file: "telemetry/analytics/experiments/guardrails.md",
-        markdown: `# Guardrails\n\nStop the experiment if any occurs:\n- success rate drops > 1pp\n- cost/task increases > 15%\n- P95 latency increases > 10%\n\n## Monitoring cadence\n- Review every 2 hours during ramp.`
-      }
-    ]
-  },
-  {
-    name: "telemetry/analytics/segments/",
-    type: "Segments",
-    description:
-      "Segment definitions and cohorting rules to ensure consistent comparisons across users, repos, and task types.",
-    purpose: [
-      "Defines cohorts and personas used in reporting",
-      "Prevents apples-to-oranges comparisons",
-      "Documents inclusion/exclusion logic"
-    ],
-    contains: [
-      "personas.md",
-      "cohort-definitions.md"
-    ],
-    useCase:
-      "A product agent compares retention for new users vs returning maintainers using the same cohort definitions across reports.",
-    examples: [
-      {
-        file: "telemetry/analytics/segments/personas.md",
-        markdown: `# Personas\n\n## Maintainer\n- Runs tasks weekly\n- Owns releases\n\n## Contributor\n- Runs tasks sporadically\n- Focused on isolated fixes\n\n## Evaluator\n- Runs reviews + validation flows.`
-      },
-      {
-        file: "telemetry/analytics/segments/cohort-definitions.md",
-        markdown: `# Cohort Definitions\n\n## New user\nFirst successful task within the last 30 days.\n\n## Returning user\nHas at least one successful task older than 30 days.\n\n## Power user\n>= 20 successful tasks in the last 7 days.`
-      }
-    ]
+      "A product agent reviews KPI definitions and retention notes, then uses standard queries to validate hypotheses."
   }
-];
+};
+
+const curatedMarkdownSamples = {
+  ".ai/README.md": `# Agentic Workspace\n\nThis folder is the source-of-truth for agent behavior.\n\n## Key outcomes\n- Consistent execution policy\n- Shared language across agents\n- Easy portability between AI coding platforms`,
+  ".ai/global/coding-style.md": `# Coding Style\n\n## JavaScript\n- Use const by default\n- Prefer small pure functions\n- Keep UI copy concise and user-centered\n\n## Commits\n- Write imperative commit messages\n- Scope each commit to one clear purpose`,
+  ".ai/shared/security-guidelines.md": `# Security Guidelines\n\n## Input Safety\n- Validate all incoming payloads\n- Sanitize untrusted content before rendering\n\n## Secrets\n- Never commit credentials\n- Use runtime environment injection`,
+  ".ai/orchestration/execution-graph.md": `# Execution Graph\n\nStart -> Plan -> Delegate -> Validate -> Merge\n\n## Failure Path\nIf validation fails: route to Debugging Agent -> re-run tests -> retry merge`,
+  ".ai/memory/known-bugs.md": `# Known Bugs\n\n## Issue: Search UI loses focus\n- Symptom: input caret jumps when folder list rerenders\n- Workaround: debounce search updates\n\n## Issue: Missing telemetry folder\n- Symptom: agents can't discover analytics schema\n- Fix: ensure telemetry/ is included in context loading`,
+  ".ai/workflows/incident-response.md": `# Incident Response\n\n1. Confirm severity\n2. Assign incident commander\n3. Stabilize production\n4. Communicate updates every 15 minutes\n5. Publish postmortem`,
+  ".ai/telemetry/analytics/README.md": `# telemetry/analytics\n\nThis folder standardizes how we turn raw telemetry into decisions.\n\n## Contents\n- Event taxonomy + schemas\n- KPI definitions\n- Dashboards + recurring reports\n- Experiments + interpretation guardrails`,
+  ".ai/telemetry/analytics/events-schema.md": `# Events Schema\n\n## Naming\n- Use dot notation: \`agent.run.started\`\n- Prefer noun + verb + outcome\n\n## Required fields\n- \`timestamp\` (ISO)\n- \`session_id\`\n- \`agent_role\`\n- \`task_type\`\n- \`success\` (boolean)\n\n## Optional fields\n- \`latency_ms\`\n- \`tokens_in\`, \`tokens_out\`\n- \`error_code\``,
+  ".ai/telemetry/analytics/kpi-definitions.md": `# KPI Definitions\n\n## Success Rate\nSuccessful tasks / total tasks over a rolling 7-day window.\n\n## Cost per Task\n(token_cost_usd + infra_cost_usd) / successful tasks.\n\n## Time to First Useful Output\nP50 and P95 of elapsed seconds from task start to first validated artifact.`,
+  ".ai/telemetry/analytics/data-quality.md": `# Data Quality Checks\n\n- Reject events missing required fields\n- Monitor schema drift (new/removed keys)\n- Deduplicate by (session_id, event_id)\n- Alert on late-arriving events (> 24h)\n\n## Daily gate\nIf null-rate for \`success\` > 0.1%: block KPI rollups.`,
+  ".ai/telemetry/analytics/privacy.md": `# Privacy & PII\n\n- Never log secrets, tokens, or raw file contents\n- Hash stable identifiers when possible\n- Redact paths when they can reveal user info\n\n## Retention\n- Raw events: 30 days\n- Aggregates: 18 months\n\n## Access\n- Role-based access to raw events\n- Dashboards are safe-by-default (aggregated).`,
+  ".ai/telemetry/analytics/retention.md": `# Retention\n\n## Definitions\n- D0: first day active\n- D7/D30: returned and produced a successful task\n\n## Cohort cut\n- Cohort by first successful task\n- Exclude internal test traffic\n\n## Leading indicators\n- Save rate (exports per session)\n- Return-to-fix (reruns within 24h).`,
+  ".ai/telemetry/analytics/anomaly-detection.md": `# Anomaly Detection\n\n## Signals\n- P95 latency\n- failure rate\n- cost per task\n\n## Rules\n- Trigger when z-score > 3 over 14-day baseline\n- Suppress if traffic < minimum threshold\n\n## Response\n- Create incident ticket\n- Attach top contributing agents + tasks\n- Link queries used for diagnosis.`,
+  ".ai/telemetry/analytics/dashboards/overview.md": `# Overview Dashboard\n\n## Tiles\n- Task success rate (7d)\n- P95 end-to-end latency\n- Cost per successful task\n\n## Breakdowns\n- By agent_role\n- By task_type\n- By repository (when available)`,
+  ".ai/telemetry/analytics/dashboards/latency.md": `# Latency Dashboard\n\n## Charts\n- P50/P95 latency over time\n- Slowest steps (context load, tools, validation)\n\n## Notes\n- Compare like-for-like task types\n- Watch for token spikes correlated with latency.`,
+  ".ai/telemetry/analytics/dashboards/cost.md": `# Cost Dashboard\n\n## KPIs\n- Token cost per task\n- Tokens in/out distributions\n- Top cost drivers by agent_role\n\n## Guardrails\n- Alert if cost/task increases > 20% week-over-week.`,
+  ".ai/telemetry/analytics/reports/weekly-insights.md": `# Weekly Insights\n\n## Highlights\n- Success rate: 98.7% (+0.4pp)\n- P95 latency: 920ms (-11%)\n- Cost per task: $0.014 (+3%)\n\n## Actions\n- Investigate cost increase in \`security-auditor\`\n- Improve caching for context-loading step`,
+  ".ai/telemetry/analytics/reports/incident-postmortem-metrics.md": `# Postmortem Metrics Appendix\n\n## Impact window\n2026-05-10 12:05 UTC → 13:20 UTC\n\n## Observed\n- Failure rate peaked at 12.3%\n- P95 latency peaked at 4.2s\n\n## Links\n- Dashboard snapshot\n- Queries used for root cause.`,
+  ".ai/telemetry/analytics/queries/common-sql.md": `# Common SQL Patterns\n\n## Success rate (7d)\n\`\`\`sql\nSELECT\n  date_trunc('day', timestamp) AS day,\n  AVG(CASE WHEN success THEN 1 ELSE 0 END) AS success_rate\nFROM events\nWHERE timestamp >= now() - interval '7 days'\nGROUP BY 1\nORDER BY 1;\n\`\`\``,
+  ".ai/telemetry/analytics/queries/funnel-query.md": `# Funnel Query\n\nGoal: measure drop-off across execution stages.\n\nStages:\n1. started\n2. planned\n3. tools_used\n4. validated\n5. completed\n\nOutput: conversion between each stage by task_type.`,
+  ".ai/telemetry/analytics/experiments/ab-template.md": `# Experiment: <name>\n\n## Hypothesis\nIf we change <X>, then <metric> improves because <reason>.\n\n## Metrics\n- Primary: P95 latency\n- Guardrails: success rate, cost/task\n\n## Ramp\n- 10% → 50% → 100% with stop conditions.`,
+  ".ai/telemetry/analytics/experiments/guardrails.md": `# Guardrails\n\nStop the experiment if any occurs:\n- success rate drops > 1pp\n- cost/task increases > 15%\n- P95 latency increases > 10%\n\n## Monitoring cadence\n- Review every 2 hours during ramp.`,
+  ".ai/telemetry/analytics/segments/personas.md": `# Personas\n\n## Maintainer\n- Runs tasks weekly\n- Owns releases\n\n## Contributor\n- Runs tasks sporadically\n- Focused on isolated fixes\n\n## Evaluator\n- Runs reviews + validation flows.`,
+  ".ai/telemetry/analytics/segments/cohort-definitions.md": `# Cohort Definitions\n\n## New user\nFirst successful task within the last 30 days.\n\n## Returning user\nHas at least one successful task older than 30 days.\n\n## Power user\n>= 20 successful tasks in the last 7 days.`
+};
+
+function createGenericMarkdownSample(filePath) {
+  const baseName = filePath.split("/").pop() || filePath;
+  return `# ${baseName}\n\nThis is a sample of \`${filePath}\` in the \`.ai/\` workspace.\n\n## What it’s for\n- Capture stable guidance for agents and humans\n- Keep execution consistent across tools and repos\n- Reduce repeated instructions during tasks\n\n## Typical sections\n- Scope\n- Rules\n- Examples\n- Edge cases\n- Review checklist`;
+}
+
+function getImmediateChildren(dirPath, workspace) {
+  const normalizedDir = ensureTrailingSlash(dirPath);
+  const childDirectories = workspace.directories
+    .filter((dir) => dir !== normalizedDir && getParentDirectory(dir) === normalizedDir)
+    .map((dir) => `${getBaseName(dir)}/`);
+
+  const childFiles = workspace.files
+    .filter((file) => getParentDirectory(file) === normalizedDir)
+    .map((file) => file.split("/").pop() || file);
+
+  childDirectories.sort((a, b) => a.localeCompare(b));
+  childFiles.sort((a, b) => a.localeCompare(b));
+  return [...childDirectories, ...childFiles];
+}
+
+function getMarkdownExamplesForDirectory(dirPath, workspace) {
+  const normalizedDir = ensureTrailingSlash(dirPath);
+  const markdownFiles = workspace.files
+    .filter(
+      (file) =>
+        getParentDirectory(file) === normalizedDir &&
+        file.toLowerCase().endsWith(".md")
+    )
+    .sort((a, b) => a.localeCompare(b));
+
+  if (!markdownFiles.length) {
+    const exampleFile = `${normalizedDir}README.md (example)`;
+    return [
+      {
+        file: exampleFile,
+        markdown: `# ${getBaseName(normalizedDir) || ".ai"}\n\nThis is an example README for \`${normalizedDir}\`.\n\n## What you’ll find here\n- Folder-specific context files and subfolders\n- Policies or runbooks that agents load during tasks\n\n## How agents use it\n1. Discover relevant docs quickly\n2. Load the smallest useful subset into context\n3. Apply rules consistently while coding\n`
+      }
+    ];
+  }
+
+  return markdownFiles.map((filePath) => ({
+    file: filePath,
+    markdown: curatedMarkdownSamples[filePath] ?? createGenericMarkdownSample(filePath)
+  }));
+}
+
+function buildFolderData(workspace) {
+  const sortedDirectories = [...workspace.directories].sort((a, b) => {
+    const depthA = a.split("/").length;
+    const depthB = b.split("/").length;
+    if (depthA !== depthB) {
+      return depthA - depthB;
+    }
+    return a.localeCompare(b);
+  });
+
+  return sortedDirectories.map((dirPath) => {
+    const normalizedDir = ensureTrailingSlash(dirPath);
+    const curated = curatedFolderDetails[normalizedDir];
+
+    return {
+      name: normalizedDir,
+      label: normalizedDir === ".ai/" ? ".ai/" : `${getBaseName(normalizedDir)}/`,
+      type: curated?.type ?? "Folder",
+      description:
+        curated?.description ??
+        `A folder inside \`.ai/\` at \`${normalizedDir}\`. Select it to see nested folders and example markdown.`,
+      purpose:
+        curated?.purpose ?? [
+          "Organizes related context files",
+          "Keeps agent guidance discoverable and reusable",
+          "Supports consistent execution across tasks"
+        ],
+      contains: getImmediateChildren(normalizedDir, workspace),
+      useCase:
+        curated?.useCase ??
+        "Browse this folder to find the most relevant docs before starting work, then load only what you need into context.",
+      examples: getMarkdownExamplesForDirectory(normalizedDir, workspace)
+    };
+  });
+}
+
+const folderData = buildFolderData(aiWorkspace);
+const folderByName = new Map(folderData.map((folder) => [folder.name, folder]));
 const folderSearchIndex = folderData.map((folder) => ({
   folder,
-  searchText: [folder.name, folder.type, folder.description, folder.useCase].join(" ").toLowerCase()
+  searchText: [folder.name, folder.label, folder.type, folder.description, folder.useCase]
+    .join(" ")
+    .toLowerCase()
 }));
+
+function buildDirectoryChildrenMap(directories) {
+  const map = new Map();
+  directories.forEach((dir) => {
+    const parent = getParentDirectory(dir);
+    if (!parent) {
+      return;
+    }
+    if (!map.has(parent)) {
+      map.set(parent, []);
+    }
+    map.get(parent).push(dir);
+  });
+
+  map.forEach((children, parent) => {
+    children.sort((a, b) => a.localeCompare(b));
+    map.set(parent, children);
+  });
+
+  return map;
+}
+
+const directoryChildren = buildDirectoryChildrenMap(aiWorkspace.directories);
 
 const listNode = document.getElementById("folder-list");
 const searchNode = document.getElementById("folder-search");
@@ -445,6 +722,9 @@ const useCaseNode = document.getElementById("folder-use-case");
 const previewNode = document.getElementById("markdown-preview");
 const exampleFileNode = document.getElementById("example-file");
 const chipsNode = document.getElementById("example-chips");
+
+let activeFolderName = folderByName.has(".ai/") ? ".ai/" : folderData[0]?.name;
+const expandedFolders = new Set([ensureTrailingSlash(".ai")]);
 
 function fillList(node, values) {
   node.innerHTML = "";
@@ -550,13 +830,114 @@ function renderDetails(folder) {
   titleNode.textContent = folder.name;
   badgeNode.textContent = folder.type;
   descriptionNode.textContent = folder.description;
-  fillList(purposeNode, folder.purpose);
-  fillList(containsNode, folder.contains);
-  useCaseNode.textContent = folder.useCase;
+  fillList(purposeNode, folder.purpose ?? []);
+  fillList(containsNode, folder.contains ?? []);
+  useCaseNode.textContent = folder.useCase ?? "";
   renderExampleChips(folder);
 }
 
-function renderFolderButtons(items) {
+function setActiveFolder(folderName) {
+  const folder = folderByName.get(folderName);
+  if (!folder) {
+    return;
+  }
+  activeFolderName = folderName;
+  renderDetails(folder);
+}
+
+function renderTreeExplorer() {
+  listNode.innerHTML = "";
+
+  const rootFolder = folderByName.get(".ai/") ?? folderData[0];
+  if (!rootFolder) {
+    return;
+  }
+
+  const rows = [];
+
+  function walk(dir, depth) {
+    rows.push({ dir, depth });
+    const isExpanded = expandedFolders.has(dir);
+    if (!isExpanded) {
+      return;
+    }
+    const children = directoryChildren.get(dir) ?? [];
+    children.forEach((childDir) => walk(childDir, depth + 1));
+  }
+
+  walk(rootFolder.name, 0);
+
+  rows.forEach(({ dir, depth }) => {
+    const folder = folderByName.get(dir);
+    if (!folder) {
+      return;
+    }
+
+    const row = document.createElement("div");
+    row.className = "tree-row";
+    row.style.paddingLeft = `${depth * 14}px`;
+
+    const children = directoryChildren.get(dir) ?? [];
+    const hasChildren = children.length > 0;
+    const isExpanded = expandedFolders.has(dir);
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "tree-toggle";
+    toggle.textContent = hasChildren ? (isExpanded ? "▾" : "▸") : "•";
+    toggle.disabled = !hasChildren;
+    toggle.setAttribute(
+      "aria-label",
+      hasChildren ? (isExpanded ? "Collapse folder" : "Expand folder") : "Folder"
+    );
+
+    toggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      if (!hasChildren) {
+        return;
+      }
+      if (expandedFolders.has(dir)) {
+        expandedFolders.delete(dir);
+      } else {
+        expandedFolders.add(dir);
+      }
+      renderExplorer();
+    });
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "folder-button tree-item";
+    button.textContent = folder.label;
+    button.dataset.folder = folder.name;
+    button.setAttribute("role", "option");
+    button.setAttribute("aria-selected", "false");
+
+    button.addEventListener("click", () => {
+      setActiveFolder(folder.name);
+      renderExplorer();
+    });
+
+    if (activeFolderName === folder.name) {
+      button.classList.add("active");
+      button.setAttribute("aria-selected", "true");
+    }
+
+    row.appendChild(toggle);
+    row.appendChild(button);
+    listNode.appendChild(row);
+  });
+
+  if (!activeFolderName) {
+    activeFolderName = rootFolder.name;
+    renderDetails(rootFolder);
+    renderExplorer();
+  } else if (folderByName.has(activeFolderName)) {
+    renderDetails(folderByName.get(activeFolderName));
+  }
+}
+
+function renderSearchExplorer(items) {
   listNode.innerHTML = "";
 
   items.forEach((folder) => {
@@ -568,32 +949,27 @@ function renderFolderButtons(items) {
     button.setAttribute("role", "option");
     button.setAttribute("aria-selected", "false");
 
-    button.addEventListener("click", () => {
-      document.querySelectorAll(".folder-button").forEach((candidate) => {
-        candidate.classList.remove("active");
-        candidate.setAttribute("aria-selected", "false");
-      });
+    if (activeFolderName === folder.name) {
       button.classList.add("active");
       button.setAttribute("aria-selected", "true");
-      renderDetails(folder);
+    }
+
+    button.addEventListener("click", () => {
+      setActiveFolder(folder.name);
+      renderExplorer();
     });
 
     listNode.appendChild(button);
   });
-
-  const firstButton = listNode.querySelector(".folder-button");
-  if (firstButton) {
-    firstButton.classList.add("active");
-    firstButton.setAttribute("aria-selected", "true");
-    const activeFolder = items.find((item) => item.name === firstButton.dataset.folder);
-    if (activeFolder) {
-      renderDetails(activeFolder);
-    }
-  }
 }
 
-function applyFilter() {
+function renderExplorer() {
   const query = searchNode.value.trim().toLowerCase();
+  if (!query) {
+    renderTreeExplorer();
+    return;
+  }
+
   const filtered = folderSearchIndex
     .filter((entry) => entry.searchText.includes(query))
     .map((entry) => entry.folder);
@@ -609,9 +985,13 @@ function applyFilter() {
     return;
   }
 
-  renderFolderButtons(filtered);
+  renderSearchExplorer(filtered);
 }
 
-searchNode.addEventListener("input", applyFilter);
+searchNode.addEventListener("input", renderExplorer);
 
-renderFolderButtons(folderData);
+if (activeFolderName && folderByName.has(activeFolderName)) {
+  renderDetails(folderByName.get(activeFolderName));
+}
+
+renderExplorer();
