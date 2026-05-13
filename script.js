@@ -240,10 +240,10 @@ const folderData = [
     markdown: `# Daily Performance Summary\n\n- P95 latency: 920ms (down 11%)\n- Task success rate: 98.7%\n- Top bottleneck: context-loading step`
   }
 ];
-const indexedFolderData = folderData.map((folder) => {
-  folder.searchText = [folder.name, folder.type, folder.description, folder.useCase].join(" ").toLowerCase();
-  return folder;
-});
+const folderSearchIndex = folderData.map((folder) => ({
+  folder,
+  searchText: [folder.name, folder.type, folder.description, folder.useCase].join(" ").toLowerCase()
+}));
 
 const listNode = document.getElementById("folder-list");
 const searchNode = document.getElementById("folder-search");
@@ -316,7 +316,9 @@ function renderFolderButtons(items) {
 
 function applyFilter() {
   const query = searchNode.value.trim().toLowerCase();
-  const filtered = indexedFolderData.filter((folder) => folder.searchText.includes(query));
+  const filtered = folderSearchIndex
+    .filter((entry) => entry.searchText.includes(query))
+    .map((entry) => entry.folder);
 
   if (!filtered.length) {
     listNode.innerHTML = "";
@@ -334,4 +336,4 @@ function applyFilter() {
 
 searchNode.addEventListener("input", applyFilter);
 
-renderFolderButtons(indexedFolderData);
+renderFolderButtons(folderData);
