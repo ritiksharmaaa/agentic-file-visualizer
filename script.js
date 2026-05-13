@@ -283,12 +283,16 @@ function renderFolderButtons(items) {
     button.className = "folder-button";
     button.textContent = folder.name;
     button.dataset.folder = folder.name;
+    button.setAttribute("role", "option");
+    button.setAttribute("aria-selected", "false");
 
     button.addEventListener("click", () => {
       document.querySelectorAll(".folder-button").forEach((candidate) => {
         candidate.classList.remove("active");
+        candidate.setAttribute("aria-selected", "false");
       });
       button.classList.add("active");
+      button.setAttribute("aria-selected", "true");
       renderDetails(folder);
     });
 
@@ -298,6 +302,7 @@ function renderFolderButtons(items) {
   const firstButton = listNode.querySelector(".folder-button");
   if (firstButton) {
     firstButton.classList.add("active");
+    firstButton.setAttribute("aria-selected", "true");
     const activeFolder = items.find((item) => item.name === firstButton.dataset.folder);
     if (activeFolder) {
       renderDetails(activeFolder);
@@ -315,7 +320,7 @@ function applyFilter() {
   );
 
   if (!filtered.length) {
-    listNode.innerHTML = '<p class="muted">No folders match your search.</p>';
+    listNode.innerHTML = '<p class="muted" role="status" aria-live="polite">No folders match your search.</p>';
     return;
   }
 
