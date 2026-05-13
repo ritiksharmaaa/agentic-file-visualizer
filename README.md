@@ -4,7 +4,7 @@ Interactive static site that visualizes a platform-agnostic `.ai/` workspace use
 
 ## Run locally
 
-Open `/home/runner/work/agentic-file-visualizer/agentic-file-visualizer/index.html` in your browser.
+Open `index.html` in any modern browser.
 
 ## What it shows
 
