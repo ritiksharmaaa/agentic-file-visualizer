@@ -1,6 +1,7 @@
 # agentic-file-visualizer
 
 Interactive static site that visualizes a platform-agnostic `.ai/` workspace used in agentic coding systems (Copilot, Codex, Claude-style workflows).
+The `.ai/` workspace is a structured context package containing policies, standards, agent definitions, orchestration rules, and project memory used to coordinate AI coding agents.
 
 ## Run locally
 
