@@ -238,6 +238,194 @@ const folderData = [
       "A performance-optimizer agent can correlate latency spikes with token-consumption growth before proposing changes.",
     exampleFile: "telemetry/performance/daily-summary.md",
     markdown: `# Daily Performance Summary\n\n- P95 latency: 920ms (down 11%)\n- Task success rate: 98.7%\n- Top bottleneck: context-loading step`
+  },
+  {
+    name: "telemetry/analytics/",
+    type: "Behavior Analytics",
+    description:
+      "Product and workflow analytics: event schemas, dashboards, reporting, experimentation readouts, and governance for how insights are produced.",
+    purpose: [
+      "Defines which events are tracked and how they map to KPIs",
+      "Standardizes dashboards, reports, and recurring analysis",
+      "Sets guardrails for privacy, data quality, and interpretation"
+    ],
+    contains: [
+      "README.md, events-schema.md, kpi-definitions.md, data-quality.md, privacy.md",
+      "dashboards/, reports/, queries/, experiments/, segments/",
+      "retention.md, anomaly-detection.md"
+    ],
+    useCase:
+      "A product-strategist agent reviews KPI definitions + retention notes, then pulls a standardized query template to validate a hypothesis before proposing a roadmap change.",
+    examples: [
+      {
+        file: "telemetry/analytics/README.md",
+        markdown: `# telemetry/analytics\n\nThis folder standardizes how we turn raw telemetry into decisions.\n\n## Contents\n- Event taxonomy + schemas\n- KPI definitions\n- Dashboards + recurring reports\n- Experiments + interpretation guardrails`
+      },
+      {
+        file: "telemetry/analytics/events-schema.md",
+        markdown: `# Events Schema\n\n## Naming\n- Use dot notation: \`agent.run.started\`\n- Prefer noun + verb + outcome\n\n## Required fields\n- \`timestamp\` (ISO)\n- \`session_id\`\n- \`agent_role\`\n- \`task_type\`\n- \`success\` (boolean)\n\n## Optional fields\n- \`latency_ms\`\n- \`tokens_in\`, \`tokens_out\`\n- \`error_code\``
+      },
+      {
+        file: "telemetry/analytics/kpi-definitions.md",
+        markdown: `# KPI Definitions\n\n## Success Rate\nSuccessful tasks / total tasks over a rolling 7-day window.\n\n## Cost per Task\n(token_cost_usd + infra_cost_usd) / successful tasks.\n\n## Time to First Useful Output\nP50 and P95 of elapsed seconds from task start to first validated artifact.`
+      },
+      {
+        file: "telemetry/analytics/data-quality.md",
+        markdown: `# Data Quality Checks\n\n- Reject events missing required fields\n- Monitor schema drift (new/removed keys)\n- Deduplicate by (session_id, event_id)\n- Alert on late-arriving events (> 24h)\n\n## Daily gate\nIf null-rate for \`success\` > 0.1%: block KPI rollups.`
+      },
+      {
+        file: "telemetry/analytics/privacy.md",
+        markdown: `# Privacy & PII\n\n- Never log secrets, tokens, or raw file contents\n- Hash stable identifiers when possible\n- Redact paths when they can reveal user info\n\n## Retention\n- Raw events: 30 days\n- Aggregates: 18 months\n\n## Access\n- Role-based access to raw events\n- Dashboards are safe-by-default (aggregated).`
+      },
+      {
+        file: "telemetry/analytics/retention.md",
+        markdown: `# Retention\n\n## Definitions\n- D0: first day active\n- D7/D30: returned and produced a successful task\n\n## Cohort cut\n- Cohort by first successful task\n- Exclude internal test traffic\n\n## Leading indicators\n- Save rate (exports per session)\n- Return-to-fix (reruns within 24h).`
+      },
+      {
+        file: "telemetry/analytics/anomaly-detection.md",
+        markdown: `# Anomaly Detection\n\n## Signals\n- P95 latency\n- failure rate\n- cost per task\n\n## Rules\n- Trigger when z-score > 3 over 14-day baseline\n- Suppress if traffic < minimum threshold\n\n## Response\n- Create incident ticket\n- Attach top contributing agents + tasks\n- Link queries used for diagnosis.`
+      }
+    ]
+  },
+  {
+    name: "telemetry/analytics/dashboards/",
+    type: "Dashboards",
+    description:
+      "Dashboard definitions for health, adoption, quality, latency, and cost—kept consistent across teams and tools.",
+    purpose: [
+      "Keeps KPI visualizations consistent across environments",
+      "Defines the minimum dashboard set for operations and product",
+      "Documents interpretation notes to avoid misleading reads"
+    ],
+    contains: [
+      "overview.md",
+      "latency.md",
+      "cost.md"
+    ],
+    useCase:
+      "An ops agent checks overview + latency dashboards during an incident to see impact by agent role and task type.",
+    examples: [
+      {
+        file: "telemetry/analytics/dashboards/overview.md",
+        markdown: `# Overview Dashboard\n\n## Tiles\n- Task success rate (7d)\n- P95 end-to-end latency\n- Cost per successful task\n\n## Breakdowns\n- By agent_role\n- By task_type\n- By repository (when available)`
+      },
+      {
+        file: "telemetry/analytics/dashboards/latency.md",
+        markdown: `# Latency Dashboard\n\n## Charts\n- P50/P95 latency over time\n- Slowest steps (context load, tools, validation)\n\n## Notes\n- Compare like-for-like task types\n- Watch for token spikes correlated with latency.`
+      },
+      {
+        file: "telemetry/analytics/dashboards/cost.md",
+        markdown: `# Cost Dashboard\n\n## KPIs\n- Token cost per task\n- Tokens in/out distributions\n- Top cost drivers by agent_role\n\n## Guardrails\n- Alert if cost/task increases > 20% week-over-week.`
+      }
+    ]
+  },
+  {
+    name: "telemetry/analytics/reports/",
+    type: "Reports",
+    description:
+      "Recurring reports that summarize trends, changes, and recommended actions based on standardized queries and KPI definitions.",
+    purpose: [
+      "Turns dashboards into narrative insight",
+      "Captures action items and owners",
+      "Creates an auditable history of decisions"
+    ],
+    contains: [
+      "weekly-insights.md",
+      "incident-postmortem-metrics.md"
+    ],
+    useCase:
+      "A supervisor agent produces a weekly summary and links it to the tasks backlog with specific follow-ups.",
+    examples: [
+      {
+        file: "telemetry/analytics/reports/weekly-insights.md",
+        markdown: `# Weekly Insights\n\n## Highlights\n- Success rate: 98.7% (+0.4pp)\n- P95 latency: 920ms (-11%)\n- Cost per task: $0.014 (+3%)\n\n## Actions\n- Investigate cost increase in \`security-auditor\`\n- Improve caching for context-loading step`
+      },
+      {
+        file: "telemetry/analytics/reports/incident-postmortem-metrics.md",
+        markdown: `# Postmortem Metrics Appendix\n\n## Impact window\n2026-05-10 12:05 UTC → 13:20 UTC\n\n## Observed\n- Failure rate peaked at 12.3%\n- P95 latency peaked at 4.2s\n\n## Links\n- Dashboard snapshot\n- Queries used for root cause.`
+      }
+    ]
+  },
+  {
+    name: "telemetry/analytics/queries/",
+    type: "Queries",
+    description:
+      "Reusable query templates (SQL or log query language) to power dashboards and answer recurring questions consistently.",
+    purpose: [
+      "Keeps analysis reproducible and reviewable",
+      "Avoids ad-hoc query drift for shared KPIs",
+      "Speeds up investigation by providing known-good templates"
+    ],
+    contains: [
+      "common-sql.md",
+      "funnel-query.md"
+    ],
+    useCase:
+      "A debugging agent uses the funnel query template to see where tasks fail in the execution pipeline.",
+    examples: [
+      {
+        file: "telemetry/analytics/queries/common-sql.md",
+        markdown: `# Common SQL Patterns\n\n## Success rate (7d)\n\`\`\`sql\nSELECT\n  date_trunc('day', timestamp) AS day,\n  AVG(CASE WHEN success THEN 1 ELSE 0 END) AS success_rate\nFROM events\nWHERE timestamp >= now() - interval '7 days'\nGROUP BY 1\nORDER BY 1;\n\`\`\``
+      },
+      {
+        file: "telemetry/analytics/queries/funnel-query.md",
+        markdown: `# Funnel Query\n\nGoal: measure drop-off across execution stages.\n\nStages:\n1. started\n2. planned\n3. tools_used\n4. validated\n5. completed\n\nOutput: conversion between each stage by task_type.`
+      }
+    ]
+  },
+  {
+    name: "telemetry/analytics/experiments/",
+    type: "Experiments",
+    description:
+      "A/B test and experiment artifacts: templates, guardrails, and analysis guidance for safe iteration.",
+    purpose: [
+      "Provides a consistent experiment write-up format",
+      "Sets guardrails for safety, cost, and quality",
+      "Records results and recommended follow-ups"
+    ],
+    contains: [
+      "ab-template.md",
+      "guardrails.md"
+    ],
+    useCase:
+      "A performance-optimizer drafts an experiment to reduce latency and uses guardrails to ensure success rate doesn’t regress.",
+    examples: [
+      {
+        file: "telemetry/analytics/experiments/ab-template.md",
+        markdown: `# Experiment: <name>\n\n## Hypothesis\nIf we change <X>, then <metric> improves because <reason>.\n\n## Metrics\n- Primary: P95 latency\n- Guardrails: success rate, cost/task\n\n## Ramp\n- 10% → 50% → 100% with stop conditions.`
+      },
+      {
+        file: "telemetry/analytics/experiments/guardrails.md",
+        markdown: `# Guardrails\n\nStop the experiment if any occurs:\n- success rate drops > 1pp\n- cost/task increases > 15%\n- P95 latency increases > 10%\n\n## Monitoring cadence\n- Review every 2 hours during ramp.`
+      }
+    ]
+  },
+  {
+    name: "telemetry/analytics/segments/",
+    type: "Segments",
+    description:
+      "Segment definitions and cohorting rules to ensure consistent comparisons across users, repos, and task types.",
+    purpose: [
+      "Defines cohorts and personas used in reporting",
+      "Prevents apples-to-oranges comparisons",
+      "Documents inclusion/exclusion logic"
+    ],
+    contains: [
+      "personas.md",
+      "cohort-definitions.md"
+    ],
+    useCase:
+      "A product agent compares retention for new users vs returning maintainers using the same cohort definitions across reports.",
+    examples: [
+      {
+        file: "telemetry/analytics/segments/personas.md",
+        markdown: `# Personas\n\n## Maintainer\n- Runs tasks weekly\n- Owns releases\n\n## Contributor\n- Runs tasks sporadically\n- Focused on isolated fixes\n\n## Evaluator\n- Runs reviews + validation flows.`
+      },
+      {
+        file: "telemetry/analytics/segments/cohort-definitions.md",
+        markdown: `# Cohort Definitions\n\n## New user\nFirst successful task within the last 30 days.\n\n## Returning user\nHas at least one successful task older than 30 days.\n\n## Power user\n>= 20 successful tasks in the last 7 days.`
+      }
+    ]
   }
 ];
 const folderSearchIndex = folderData.map((folder) => ({
@@ -256,6 +444,7 @@ const containsNode = document.getElementById("folder-contains");
 const useCaseNode = document.getElementById("folder-use-case");
 const previewNode = document.getElementById("markdown-preview");
 const exampleFileNode = document.getElementById("example-file");
+const chipsNode = document.getElementById("example-chips");
 
 function fillList(node, values) {
   node.innerHTML = "";
@@ -267,6 +456,96 @@ function fillList(node, values) {
   });
 }
 
+function getFolderExamples(folder) {
+  if (Array.isArray(folder.examples) && folder.examples.length) {
+    return folder.examples;
+  }
+
+  if (folder.exampleFile && folder.markdown) {
+    return [
+      {
+        file: folder.exampleFile,
+        markdown: folder.markdown
+      }
+    ];
+  }
+
+  return [];
+}
+
+function setMarkdownPreview(example) {
+  if (!example) {
+    previewNode.textContent = "# No sample markdown is configured for this folder yet.";
+    exampleFileNode.textContent = "No file selected";
+    return;
+  }
+
+  previewNode.textContent = example.markdown;
+  exampleFileNode.textContent = example.file;
+}
+
+function renderExampleChips(folder) {
+  const examples = getFolderExamples(folder);
+  chipsNode.innerHTML = "";
+
+  if (!examples.length) {
+    chipsNode.hidden = true;
+    setMarkdownPreview(null);
+    return;
+  }
+
+  chipsNode.hidden = false;
+
+  const buttons = examples.map((example, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "chip";
+    button.textContent = example.file.split("/").pop();
+    button.dataset.index = String(index);
+    button.setAttribute("role", "tab");
+    button.setAttribute("aria-selected", "false");
+
+    chipsNode.appendChild(button);
+    return button;
+  });
+
+  function activate(index, options = {}) {
+    const example = examples[index];
+    if (!example) {
+      return;
+    }
+
+    buttons.forEach((button, buttonIndex) => {
+      const isActive = buttonIndex === index;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+      button.tabIndex = isActive ? 0 : -1;
+    });
+
+    setMarkdownPreview(example);
+
+    if (options.focus && buttons[index]) {
+      buttons[index].focus();
+    }
+  }
+
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => activate(index));
+    button.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
+        return;
+      }
+
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const nextIndex = (index + direction + buttons.length) % buttons.length;
+      activate(nextIndex, { focus: true });
+    });
+  });
+
+  activate(0);
+}
+
 function renderDetails(folder) {
   titleNode.textContent = folder.name;
   badgeNode.textContent = folder.type;
@@ -274,8 +553,7 @@ function renderDetails(folder) {
   fillList(purposeNode, folder.purpose);
   fillList(containsNode, folder.contains);
   useCaseNode.textContent = folder.useCase;
-  previewNode.textContent = folder.markdown;
-  exampleFileNode.textContent = folder.exampleFile;
+  renderExampleChips(folder);
 }
 
 function renderFolderButtons(items) {

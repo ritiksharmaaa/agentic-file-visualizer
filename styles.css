@@ -159,6 +159,40 @@ h3 {
   white-space: nowrap;
 }
 
+.chip-row {
+  display: flex;
+  gap: 0.45rem;
+  overflow: auto;
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.65rem;
+  scrollbar-width: thin;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: #f8f9fc;
+  color: #2f2f32;
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+.chip:hover,
+.chip:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.chip.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: #001b3d;
+  font-weight: 600;
+}
+
 .muted {
   margin: 0 0 0.95rem;
   color: var(--muted);

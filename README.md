@@ -12,4 +12,5 @@ Open `index.html` in any modern browser (Chrome 90+, Firefox 88+, Safari 14+, or
 - Apple-inspired dashboard style
 - Interactive folder explorer
 - Folder purpose + common contents + practical usage example
-- Markdown preview panel with sample `.md` file content for each folder
+- Markdown preview panel with horizontal chips to switch between sample `.md` files per folder
+- Expanded telemetry coverage, including a detailed `telemetry/analytics/` example structure
