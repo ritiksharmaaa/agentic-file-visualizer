@@ -4,7 +4,7 @@ Interactive static site that visualizes a platform-agnostic `.ai/` workspace use
 
 ## Run locally
 
-Open `index.html` in any modern browser.
+Open `index.html` in any modern browser (Chrome 90+, Firefox 88+, Safari 14+, or Edge 90+).
 
 ## What it shows
 
