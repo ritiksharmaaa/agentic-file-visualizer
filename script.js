@@ -240,6 +240,10 @@ const folderData = [
     markdown: `# Daily Performance Summary\n\n- P95 latency: 920ms (down 11%)\n- Task success rate: 98.7%\n- Top bottleneck: context-loading step`
   }
 ];
+const indexedFolderData = folderData.map((folder) => ({
+  ...folder,
+  searchText: [folder.name, folder.type, folder.description, folder.useCase].join(" ").toLowerCase()
+}));
 
 const listNode = document.getElementById("folder-list");
 const searchNode = document.getElementById("folder-search");
@@ -312,15 +316,16 @@ function renderFolderButtons(items) {
 
 function applyFilter() {
   const query = searchNode.value.trim().toLowerCase();
-  const filtered = folderData.filter((folder) =>
-    [folder.name, folder.type, folder.description, folder.useCase]
-      .join(" ")
-      .toLowerCase()
-      .includes(query)
-  );
+  const filtered = indexedFolderData.filter((folder) => folder.searchText.includes(query));
 
   if (!filtered.length) {
-    listNode.innerHTML = '<p class="muted" role="status" aria-live="polite">No folders match your search.</p>';
+    listNode.innerHTML = "";
+    const emptyState = document.createElement("p");
+    emptyState.className = "muted";
+    emptyState.setAttribute("role", "status");
+    emptyState.setAttribute("aria-live", "polite");
+    emptyState.textContent = "No folders match your search.";
+    listNode.appendChild(emptyState);
     return;
   }
 
@@ -329,4 +334,4 @@ function applyFilter() {
 
 searchNode.addEventListener("input", applyFilter);
 
-renderFolderButtons(folderData);
+renderFolderButtons(indexedFolderData);
