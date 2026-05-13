@@ -240,10 +240,10 @@ const folderData = [
     markdown: `# Daily Performance Summary\n\n- P95 latency: 920ms (down 11%)\n- Task success rate: 98.7%\n- Top bottleneck: context-loading step`
   }
 ];
-const indexedFolderData = folderData.map((folder) => ({
-  ...folder,
-  searchText: [folder.name, folder.type, folder.description, folder.useCase].join(" ").toLowerCase()
-}));
+const indexedFolderData = folderData.map((folder) => {
+  folder.searchText = [folder.name, folder.type, folder.description, folder.useCase].join(" ").toLowerCase();
+  return folder;
+});
 
 const listNode = document.getElementById("folder-list");
 const searchNode = document.getElementById("folder-search");
