@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic Context Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="eyebrow">Agentic Coding Context Map</p>
+      <h1>Understand how the <code>.ai/</code> workspace is organized</h1>
+      <p class="subtitle">
+        An Apple-style static dashboard for exploring folders, responsibilities,
+        and example markdown content used across Copilot, Codex, and Claude-style agent workflows.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="card explorer-card">
+        <div class="section-header">
+          <h2>Folder Explorer</h2>
+          <input id="folder-search" type="search" placeholder="Search folders..." aria-label="Search folders" />
+        </div>
+        <div id="folder-list" class="folder-list" role="listbox" aria-label="Folder list"></div>
+      </section>
+
+      <section class="card details-card">
+        <div class="section-header">
+          <h2 id="folder-title">Select a folder</h2>
+          <span id="folder-badge" class="badge">Overview</span>
+        </div>
+
+        <p id="folder-description" class="muted">
+          Choose a folder from the left to view what it does, what it contains, and how it is used.
+        </p>
+
+        <div class="grid-two">
+          <article class="sub-card">
+            <h3>What this folder does</h3>
+            <ul id="folder-purpose" class="bullet-list"></ul>
+          </article>
+          <article class="sub-card">
+            <h3>Common files inside</h3>
+            <ul id="folder-contains" class="bullet-list"></ul>
+          </article>
+        </div>
+
+        <article class="sub-card use-case-card">
+          <h3>Platform usage example</h3>
+          <p id="folder-use-case"></p>
+        </article>
+      </section>
+
+      <section class="card markdown-card">
+        <div class="section-header">
+          <h2>Example Markdown Preview</h2>
+          <span id="example-file" class="badge">No file selected</span>
+        </div>
+        <pre><code id="markdown-preview"># Select a folder to load a sample markdown file</code></pre>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
